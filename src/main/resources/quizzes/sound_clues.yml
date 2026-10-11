@@ -1,0 +1,112 @@
+# 原版声音线索与听力侦探题库
+# 出题时将向玩家同步播放指定音效
+
+name: "声音侦探"
+enabled: true
+weight: 40
+worlds: []
+questions:
+  # 题目唯一标识
+  - id: snd_creeper_fuse
+    # 题目文本内容
+    text: "仔细听正在播放的声音线索，这是什么声音？"
+    # 题目类型（single 单选 / multiple 多选 / input 问答）
+    type: single
+    # 播放的声音线索（对应原版 Sound 枚举名）
+    sound-clue: ENTITY_CREEPER_PRIMED
+    # 候选选项列表
+    options:
+      A: "苦力怕即将自爆的引线声"
+      B: "营火烤肉的滋滋声"
+      C: "下界传送门启动声"
+      D: "蜘蛛爬行摩擦声"
+    # 正确答案选项或文本列表
+    answer:
+      - A
+    # 题目难度（对应 config.yml 中的 difficulties 节点）
+    difficulty: easy
+    # 客制化提示文本
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a听觉灵敏！&b{player_name}&f 抢答正确！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c听错啦 &b{player_name}&f，答案 &9{option}&f 不对！"
+    # 答对奖励指令列表（支持 console, player, sound）
+    rewards:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 10"
+
+  - id: snd_ghast_warn
+    text: "仔细听播放的尖啸声，这是哪个生物在准备发动攻击？"
+    type: single
+    sound-clue: ENTITY_GHAST_WARN
+    options:
+      A: "恶魂"
+      B: "幻翼"
+      C: "末影龙"
+      D: "末影人"
+    answer:
+      - A
+    difficulty: normal
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a精准辨认！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 800"
+      - "console:exp give {player_name} 15"
+
+  - id: snd_enderman_tp
+    text: "仔细辨听这个声音，这是哪种行为产生的音效？"
+    type: single
+    sound-clue: ENTITY_ENDERMAN_TELEPORT
+    options:
+      A: "末影人瞬间移动"
+      B: "喝下隐身药水"
+      C: "激活信标光柱"
+      D: "末影珍珠落地"
+    answer:
+      - A
+    difficulty: normal
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a完全正确！&b{player_name}&f 答对啦！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 800"
+      - "console:exp give {player_name} 15"
+
+  - id: snd_witch_laugh
+    text: "仔细听这段怪异的叫声，属于哪位生物？"
+    type: single
+    sound-clue: ENTITY_WITCH_CELEBRATE
+    options:
+      A: "女巫"
+      B: "唤魔者"
+      C: "卫道士"
+      D: "流浪商人"
+    answer:
+      - A
+    difficulty: easy
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a耳朵真尖！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c判断失误 &b{player_name}&f，答案 &9{option}&f 不对！"
+    rewards:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 10"
+
+  - id: snd_anvil_use
+    text: "仔细听这个清脆的金属撞击声，是使用什么功能方块时发出的？"
+    type: input
+    sound-clue: BLOCK_ANVIL_USE
+    answer:
+      - "铁砧"
+      - "anvil"
+    difficulty: hard
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听并打字抢答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &c耳力超群！&b{player_name}&f 抢答正确！答案就是 &9{correct_option}&f 🎉"
+      on-wrong: "❌ &c回答错误 &b{player_name}&f，你的答案 &9{option}&f 不正确！"
+    rewards:
+      - "console:money give {player_name} 1500"
+      - "console:exp give {player_name} 30"

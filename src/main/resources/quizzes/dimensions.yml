@@ -1,0 +1,95 @@
+# 异维度空间感知专属题库
+# 当玩家处于下界或末地时优先匹配出题
+
+name: "异界探秘"
+enabled: true
+weight: 30
+worlds:
+  - "world_nether"
+  - "world_the_end"
+questions:
+  # 题目唯一标识
+  - id: dim_strider_cold
+    # 题目文本内容
+    text: "炽足兽离开岩浆走上陆地后，其身体状态会发生什么变化？"
+    # 题目类型（single 单选 / multiple 多选 / input 问答）
+    type: single
+    # 候选选项列表
+    options:
+      A: "变成蓝紫色并开始发抖"
+      B: "体型迅速缩小"
+      C: "移动速度提升两倍"
+      D: "立刻燃烧自毁"
+    # 正确答案选项或文本列表
+    answer:
+      - A
+    # 题目难度（对应 config.yml 中的 difficulties 节点）
+    difficulty: easy
+    # 客制化提示文本
+    messages:
+      question: "🌋 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a异界生存专家！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    # 答对奖励指令列表（支持 console, player, sound）
+    rewards:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 12"
+
+  - id: dim_nether_mobs
+    text: "以下哪些生物属于下界原生生成的生物？(多选)"
+    type: multiple
+    options:
+      A: "恶魂"
+      B: "猪灵"
+      C: "僵尸"
+      D: "烈焰人"
+    answer:
+      - A
+      - B
+      - D
+    difficulty: normal
+    messages:
+      question: "🌋 &b{bank_name}&f · {difficulty} &b{player_name}&f，请作答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &b深谙下界生态！&b{player_name}&f 全部选对！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c答错啦 &b{player_name}&f，选项 &9{option}&f 不完全正确！"
+    rewards:
+      - "console:money give {player_name} 900"
+      - "console:exp give {player_name} 18"
+
+  - id: dim_dragon_breath
+    text: "在末地收集中末影龙喷吐残留的龙息时，必须手持什么道具？"
+    type: single
+    options:
+      A: "空桶"
+      B: "玻璃瓶"
+      C: "水瓶"
+      D: "末影之眼"
+    answer:
+      - B
+    difficulty: normal
+    messages:
+      question: "🌌 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a屠龙好手！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 900"
+      - "console:exp give {player_name} 18"
+
+  - id: dim_ancient_debris
+    text: "在下界挖掘远古残骸时，其生成数量最密集的 Y 轴高度区间大致在多少层？"
+    type: single
+    options:
+      A: "Y=8 到 22"
+      B: "Y=40 到 60"
+      C: "Y=80 到 100"
+      D: "Y=110 到 120"
+    answer:
+      - A
+    difficulty: hard
+    messages:
+      question: "🌋 &b{bank_name}&f · {difficulty} &b{player_name}&f，请抢答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &c采矿宗师！&b{player_name}&f 回答正确！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c记错层数啦 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 1500"
+      - "console:exp give {player_name} 30"

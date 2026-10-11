@@ -19,6 +19,9 @@ class QuestionCatalog(private val plugin: JavaPlugin) {
         migrateLegacyFileIfNeeded()
 
         ResourceFiles.ensure(plugin, "quizzes/minecraft.yml")
+        ResourceFiles.ensure(plugin, "quizzes/sound_clues.yml")
+        ResourceFiles.ensure(plugin, "quizzes/dimensions.yml")
+        ResourceFiles.ensure(plugin, "quizzes/safety.yml")
         ResourceFiles.ensure(plugin, "quizzes/general.yml")
 
         val quizzesDir = File(plugin.dataFolder, "quizzes")

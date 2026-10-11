@@ -1,30 +1,23 @@
-# 原版生存与常识题库
-# 题库唯一标识对应当前文件名 minecraft
+# 原版生存机制与基础常识题库
+# 唯一标识对应当前文件名 minecraft
 
-# 题库显示名称，用于广播与占位符
-name: "原版常识"
-
-# 是否启用此题库
+name: "原版生存"
 enabled: true
-
-# 轮播抽取权重，设为 0 则不参与日常轮播仅供专属活动抽取
 weight: 50
-
-# 生效世界列表，留空表示继承全局世界设置
 worlds: []
-
-# 题目列表
 questions:
   # 题目唯一标识
   - id: mc_torch
     # 题目文本内容
-    text: "合成火把的配方？"
+    text: "合成火把的合成配方是？"
     # 题目类型（single 单选 / multiple 多选 / input 问答）
     type: single
     # 候选选项列表
     options:
-      A: "一个煤炭一个木棍"
-      B: "一个铁锭一个木棍"
+      A: "煤炭加木棍"
+      B: "铁锭加木棍"
+      C: "打火石加木板"
+      D: "红石加木棍"
     # 正确答案选项或文本列表
     answer:
       - A
@@ -40,56 +33,95 @@ questions:
       - "console:money give {player_name} 500"
       - "console:exp give {player_name} 10"
 
-  - id: mc_sound_creeper
-    text: "仔细听播放的声音线索，这是哪种生物的动静？"
+  - id: mc_smoker
+    text: "烟熏炉的烧炼食物速度是普通熔炉的几倍？"
     type: single
-    sound-clue: ENTITY_CREEPER_PRIMED
     options:
-      A: "苦力怕"
-      B: "末影人"
-      C: "僵尸"
+      A: "1.5倍"
+      B: "2倍"
+      C: "3倍"
+      D: "4倍"
     answer:
-      - A
+      - B
+    difficulty: easy
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a恭喜 &b{player_name}&f，答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 500"
+      - "console:exp give {player_name} 10"
+
+  - id: mc_piston_push_limit
+    text: "普通活塞一次最多可以推动多少个方块？"
+    type: single
+    options:
+      A: "10个"
+      B: "12个"
+      C: "15个"
+      D: "16个"
+    answer:
+      - B
     difficulty: normal
     messages:
-      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
-      on-correct: "✅ &a听力真敏锐！&b{player_name}&f 抢答正确！正确答案：&9{correct_option}&f 🎉"
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a机制大师！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
       on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
     rewards:
       - "console:money give {player_name} 800"
       - "console:exp give {player_name} 15"
 
-  - id: mc_nether_mobs
-    text: "以下哪些生物原生生成在下界？(多选)"
+  - id: mc_fortune_silk_touch
+    text: "以下关于工具附魔特性的说法中正确的有？(多选)"
     type: multiple
     options:
-      A: "恶魂"
-      B: "僵尸"
-      C: "猪灵"
-      D: "苦力怕"
+      A: "时运与精准采集附魔不能共存"
+      B: "精准采集可以完整采集带蜜蜂的蜂巢"
+      C: "时运附魔可以提升远古残骸的掉落数量"
+      D: "时运附魔对掉落自身为物品的矿石生效"
     answer:
       - A
-      - C
+      - B
+      - D
     difficulty: normal
     messages:
-      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
-      on-correct: "✅ &b太棒了 &b{player_name}&f，全部选对了！正确答案：&9{correct_option}&f 🎉"
-      on-wrong: "❌ &c不好意思 &b{player_name}&f，你的答案 &9{option}&f 不完全正确，请再试一次！"
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请作答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &b专业矿工！&b{player_name}&f 全部选对！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c可惜 &b{player_name}&f，你的选项 &9{option}&f 不完全正确！"
     rewards:
-      - "console:money give {player_name} 800"
-      - "console:exp give {player_name} 15"
+      - "console:money give {player_name} 1000"
+      - "console:exp give {player_name} 20"
+
+  - id: mc_observer_pulse
+    text: "红石侦测器检测到前方方块改变时会发出几刻时长的红石脉冲？"
+    type: single
+    options:
+      A: "1刻"
+      B: "2刻"
+      C: "3刻"
+      D: "4刻"
+    answer:
+      - A
+    difficulty: hard
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请抢答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &c红石大佬！&b{player_name}&f 抢答正确！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c答错啦 &b{player_name}&f，答案 &9{option}&f 不正确！"
+    rewards:
+      - "console:money give {player_name} 1500"
+      - "console:exp give {player_name} 30"
 
   - id: mc_enchant_table
-    text: "我的世界中用于给装备附魔的方块叫什么？"
+    text: "原版中用于给装备与书本赋予魔咒的专用功能方块叫什么？"
     type: input
     answer:
       - "附魔台"
       - "enchanting table"
     difficulty: hard
     messages:
-      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请抢答：&9{quiz_id}&f → {question}"
-      on-correct: "✅ &c反应真快！&b{player_name}&f 抢答正确！答案就是 &9{correct_option}&f 🎉"
-      on-wrong: "❌ &c答错啦 &b{player_name}&f，你的回答 &9{option}&f 不对 😢"
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请直接输入文本抢答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &c手速惊人！&b{player_name}&f 抢答正确！答案就是 &9{correct_option}&f 🎉"
+      on-wrong: "❌ &c手慢或回答错误 &b{player_name}&f，你的输入 &9{option}&f 不对！"
     rewards:
       - "console:money give {player_name} 1500"
       - "console:exp give {player_name} 30"

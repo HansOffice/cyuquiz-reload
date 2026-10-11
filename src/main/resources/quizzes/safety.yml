@@ -1,0 +1,72 @@
+# 服务器规则与防骗安全常识题库
+# 帮助新手快速了解服务器守则与账号安全
+
+name: "服规与安全"
+enabled: true
+weight: 35
+worlds: []
+questions:
+  # 题目唯一标识
+  - id: safe_admin_password
+    # 题目文本内容
+    text: "服务器管理员或OP是否会以任何理由在游戏内向玩家索要账号密码？"
+    # 题目类型（single 单选 / multiple 多选 / input 问答）
+    type: single
+    # 候选选项列表
+    options:
+      A: "绝对不会，索要密码均为假冒骗子"
+      B: "为了查封违规可能会索要"
+      C: "发放全服奖励时会索要"
+      D: "排查后台BUG时可以提供"
+    # 正确答案选项或文本列表
+    answer:
+      - A
+    # 题目难度（对应 config.yml 中的 difficulties 节点）
+    difficulty: easy
+    # 客制化提示文本
+    messages:
+      question: "🛡️ &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a安全意识满分！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c警惕受骗 &b{player_name}&f，答案 &9{option}&f 严重错误！"
+    # 答对奖励指令列表（支持 console, player, sound）
+    rewards:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 10"
+
+  - id: safe_offline_trade
+    text: "私下进行未经担保的现金与第三方平台买卖游戏物资存在什么风险？"
+    type: single
+    options:
+      A: "极易被骗且不受服务器规则保护"
+      B: "完全没有任何交易风险"
+      C: "受服务器官方假一赔十保障"
+      D: "比游戏内系统交易市场更安全"
+    answer:
+      - A
+    difficulty: easy
+    messages:
+      question: "🛡️ &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a防骗警惕高！&b{player_name}&f 答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c小心上当 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 10"
+
+  - id: safe_bug_report
+    text: "在游戏过程中如果意外发现刷物或卡服恶性漏洞，正确的处理方式是？"
+    type: single
+    options:
+      A: "立即向管理团队汇报协助修复"
+      B: "自己偷偷使用刷出海量物资"
+      C: "在公屏大肆宣扬教唆其他玩家卡服"
+      D: "转手倒卖给其他不知情玩家"
+    answer:
+      - A
+    difficulty: normal
+    messages:
+      question: "🛡️ &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &b守序良民！&b{player_name}&f 答对了，感谢维护社区生态！🎉"
+      on-wrong: "❌ &c危险发言 &b{player_name}&f，利用恶性漏洞将面临永久封禁！"
+    rewards:
+      - "console:money give {player_name} 800"
+      - "console:exp give {player_name} 15"

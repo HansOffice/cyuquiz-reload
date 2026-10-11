@@ -40,7 +40,7 @@ Cyu 系列互动问答与定时答题活动插件
 | 文件 / 目录 | 用途 |
 |---|---|
 | `config.yml` | 出题间隔、智能休眠、奖池滚存、阶梯名次、答题段位、全服狂热、防脚本与定时活动 |
-| `quizzes/` | 题库配置目录，每个 `.yml` 代表一个独立题库（如 `minecraft.yml`、`general.yml`） |
+| `quizzes/` | 题库配置目录，每个 `.yml` 代表一个独立题库（如 `minecraft.yml`、`sound_clues.yml`、`dimensions.yml` 等） |
 | `stats.yml` | 本地玩家答题统计数据（未开启 MySQL 时使用） |
 | `lang/` | 多语言配置目录（包含 `zh_cn.yml` 与 `en_us.yml`） |
 | `backup/` | 覆盖前自动备份与升级备份 |
