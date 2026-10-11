@@ -1,23 +1,311 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CyuQuiz-Reload 使用文档</title><style>
-    :root{--ink:#111827;--text:#334155;--muted:#64748b;--line:#d8e1eb;--panel:#fff;--blue:#0891b2;--aqua:#22d3ee;--orange:#f59e0b;--code:#0f172a;--shadow:0 18px 42px rgba(15,23,42,.08)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:linear-gradient(180deg,#eef7fb 0,#f8fafc 460px,#fff 900px);font-family:"Microsoft YaHei","PingFang SC","Segoe UI",Arial,sans-serif;line-height:1.75}code{padding:2px 6px;border:1px solid var(--line);border-radius:6px;background:#f8fcfd;color:#0e7490;font-family:Consolas,"JetBrains Mono",monospace;font-size:.94em}pre{margin:14px 0 0;padding:18px;border-radius:8px;background:var(--code);color:#eef6fb;overflow:auto;font-family:Consolas,"JetBrains Mono",monospace;font-size:14px;line-height:1.7}pre code{padding:0;border:0;background:transparent;color:inherit;font-size:inherit}.page{display:grid;grid-template-columns:260px minmax(0,1fr);gap:34px;width:min(1220px,calc(100% - 34px));margin:0 auto;padding:34px 0 70px}.sidebar{position:sticky;top:18px;height:calc(100vh - 36px);padding:18px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.94);box-shadow:var(--shadow);overflow:auto}.brand{padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}.brand strong{display:block;color:var(--ink);font-size:24px}.brand span{display:block;margin-top:5px;color:var(--muted);font-size:13px}.nav-title{margin:16px 0 7px;color:var(--muted);font-size:12px;font-weight:700}.nav a{display:block;padding:6px 10px;border-radius:7px;color:#475569;font-size:14px;text-decoration:none}.nav a:hover{background:#e9f7fb;color:var(--ink)}.hero{padding:38px 34px;border:1px solid #cfe5ee;border-radius:8px;background:linear-gradient(135deg,rgba(8,145,178,.13),rgba(34,211,238,.08)),#fbfeff;box-shadow:var(--shadow)}.eyebrow{margin:0 0 8px;color:#0e7490;font-weight:700}h1{margin:0;color:var(--ink);font-size:46px;line-height:1.1}.lead{max-width:840px;margin:16px 0 0;color:var(--muted);font-size:18px}.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}.meta span{padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.72);color:#334155;font-size:14px;font-weight:700}section{scroll-margin-top:24px;padding:34px 0;border-bottom:1px solid var(--line)}section:last-child{border-bottom:0}h2{margin:0 0 14px;color:var(--ink);font-size:28px}h2::after{content:"";display:block;width:44px;height:3px;margin-top:8px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--aqua))}h3{margin:24px 0 8px;color:var(--ink);font-size:20px}p{margin:0 0 12px;color:var(--muted)}table{width:100%;margin:14px 0 0;border-collapse:collapse;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);font-size:15px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f8fb;color:var(--ink);font-weight:700}tr:last-child td{border-bottom:0}.note{margin:14px 0 0;padding:13px 15px;border-left:4px solid var(--blue);border-radius:8px;background:#ecfafd;color:#155e75}.footer{padding-top:24px;color:var(--muted);font-size:14px}@media(max-width:980px){.page{display:block}.sidebar{position:static;height:auto;margin-bottom:18px}.nav{columns:2}.meta{grid-template-columns:1fr}h1{font-size:38px}}@media(max-width:620px){.nav{columns:1}.hero{padding:26px 20px}h1{font-size:32px}table{display:block;overflow-x:auto}}
-  </style></head>
-<body><main class="page"><aside class="sidebar"><div class="brand"><strong>CyuQuiz-Reload</strong><span>答题系统文档</span></div><nav class="nav"><div class="nav-title">目录</div><a href="#intro">插件介绍</a><a href="#install">安装与升级</a><a href="#config">核心配置</a><a href="#banks">多文件题库</a><a href="#gameplay">特色玩法机制</a><a href="#antibot">防脚本安全</a><a href="#events">定时活动场次</a><a href="#commands">命令与权限</a><a href="#papi">PlaceholderAPI</a><a href="#advice">运维建议</a></nav></aside><div class="content">
-<header class="hero" id="intro"><p class="eyebrow">CyuQuiz-Reload Wiki</p><h1>CyuQuiz-Reload 使用文档</h1><p class="lead">CyuQuiz-Reload 是新一代互动问答与定时答题插件，支持多文件独立题库目录、世界空间感知分发、原版音效线索题、奖池滚存累加、前三名阶梯领奖、答题荣誉段位、全服狂热时刻与五重防脚本秒答拦截。</p><p class="lead">专为 Paper / Folia / Legacy 三端物理分流打造，提供敏感级并发安全调度与黑盒级服主运维体验。</p><div class="meta"><span>多文件独立题库</span><span>奖池滚存与狂热</span><span>五重防脚本</span><span>荣誉段位体系</span></div></header>
-<section id="install"><h2>安装与升级</h2><table><thead><tr><th>步骤</th><th>说明</th></tr></thead><tbody><tr><td>放置插件</td><td>根据服务端类型选择 <code>cyuquiz-reload-{paper|folia|legacy}-1.0.4.jar</code> 放入服务器 <code>plugins</code> 目录</td></tr><tr><td>首次启动</td><td>重启服务器自动生成 <code>config.yml</code>、<code>lang/</code> 多语言目录及 <code>quizzes/</code> 题库目录</td></tr><tr><td>平滑升级</td><td>内建配置升级管理器，自动继承历史参数并生成完整快照至 <code>backup/</code> 目录</td></tr><tr><td>旧版题库兼容</td><td>若检测到旧版根目录 <code>quizzes.yml</code>，插件将在首次启动时自动归档迁移为 <code>quizzes/legacy.yml</code></td></tr></tbody></table></section>
-<section id="config"><h2>核心配置</h2><pre><code>quiz-interval: 1800
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyuQuiz-Reload 使用文档</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --text: #334155;
+      --muted: #64748b;
+      --line: #d8e1eb;
+      --panel: #fff;
+      --blue: #0891b2;
+      --aqua: #22d3ee;
+      --orange: #f59e0b;
+      --code: #0f172a;
+      --shadow: 0 18px 42px rgba(15, 23, 42, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: linear-gradient(180deg, #eef7fb 0, #f8fafc 460px, #fff 900px);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    code {
+      padding: 2px 6px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f8fcfd;
+      color: #0e7490;
+      font-family: Consolas, "JetBrains Mono", monospace;
+      font-size: .94em;
+    }
+    pre {
+      margin: 14px 0 0;
+      padding: 18px;
+      border-radius: 8px;
+      background: var(--code);
+      color: #eef6fb;
+      overflow: auto;
+      font-family: Consolas, "JetBrains Mono", monospace;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    pre code {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: inherit;
+    }
+    .page {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 34px;
+      width: min(1220px, calc(100% - 34px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      height: calc(100vh - 36px);
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: var(--shadow);
+      overflow: auto;
+    }
+    .brand {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 16px;
+    }
+    .brand strong {
+      display: block;
+      color: var(--ink);
+      font-size: 24px;
+    }
+    .brand span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .nav-title {
+      margin: 16px 0 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .nav a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 7px;
+      color: #475569;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .nav a:hover {
+      background: #e9f7fb;
+      color: var(--ink);
+    }
+    .hero {
+      padding: 38px 34px;
+      border: 1px solid #cfe5ee;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(8, 145, 178, .13), rgba(34, 211, 238, .08)), #fbfeff;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #0e7490;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 46px;
+      line-height: 1.1;
+    }
+    .lead {
+      max-width: 840px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .meta span {
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .72);
+      color: #334155;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    section {
+      scroll-margin-top: 24px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-child { border-bottom: 0; }
+    h2 {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-size: 28px;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 44px;
+      height: 3px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--aqua));
+    }
+    h3 {
+      margin: 24px 0 8px;
+      color: var(--ink);
+      font-size: 20px;
+    }
+    p { margin: 0 0 12px; color: var(--muted); }
+    table {
+      width: 100%;
+      margin: 14px 0 0;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel);
+      font-size: 15px;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f8fb;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .footer {
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 980px) {
+      .page { display: block; }
+      .sidebar { position: static; height: auto; margin-bottom: 18px; }
+      .nav { columns: 2; }
+      .meta { grid-template-columns: 1fr; }
+      h1 { font-size: 38px; }
+    }
+    @media (max-width: 620px) {
+      .nav { columns: 1; }
+      .hero { padding: 26px 20px; }
+      h1 { font-size: 32px; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+  <aside class="sidebar">
+    <div class="brand">
+      <strong>CyuQuiz-Reload</strong>
+      <span>答题系统文档</span>
+    </div>
+    <nav class="nav">
+      <div class="nav-title">目录</div>
+      <a href="#intro">插件介绍</a>
+      <a href="#install">安装与升级</a>
+      <a href="#config">核心配置指南</a>
+      <a href="#banks">多文件题库系统</a>
+      <a href="#gameplay">特色玩法机制</a>
+      <a href="#antibot">防脚本安全防线</a>
+      <a href="#events">定时活动场次</a>
+      <a href="#commands">命令与权限表</a>
+      <a href="#papi">PlaceholderAPI</a>
+      <a href="#troubleshooting">报错排查速查</a>
+      <a href="#advice">运维最佳实践</a>
+    </nav>
+  </aside>
+
+  <div class="content">
+    <header class="hero" id="intro">
+      <p class="eyebrow">CyuQuiz-Reload Wiki</p>
+      <h1>CyuQuiz-Reload 使用文档</h1>
+      <p class="lead">CyuQuiz-Reload 是 Cyu 系列互动问答与定时答题插件，支持多文件独立题库目录、世界空间感知分发、原版音效线索题、奖池滚存累加、前三名阶梯领奖、答题荣誉段位、全服狂热时刻与五重防脚本秒答拦截。</p>
+      <p class="lead">专为 Paper / Folia / Legacy 三端物理分流打造，提供敏感级并发安全调度与黑盒级服主运维体验。</p>
+      <div class="meta">
+        <span>多文件独立题库</span>
+        <span>奖池滚存与狂热</span>
+        <span>五重防脚本拦截</span>
+        <span>原版音效线索题</span>
+      </div>
+    </header>
+
+    <section id="install">
+      <h2>安装与升级</h2>
+      <table>
+        <thead><tr><th>安装阶段</th><th>操作步骤</th><th>运行表现</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>放置运行包</td>
+            <td>根据服务端类型选择 <code>cyuquiz-reload-{paper|folia|legacy}-1.0.4.jar</code> 放入 <code>plugins</code> 目录</td>
+            <td>单端物理原生直连，零冗余运行时</td>
+          </tr>
+          <tr>
+            <td>首次启动</td>
+            <td>重启服务器或加载插件</td>
+            <td>自动生成 <code>config.yml</code>、<code>lang/</code> 多语言文件以及 <code>quizzes/</code> 目录下的 5 套开箱题库</td>
+          </tr>
+          <tr>
+            <td>平滑升级</td>
+            <td>直接覆盖新版本 jar 文件并启动</td>
+            <td>内建升级管理器自动继承历史自定义参数，并将旧配置完整备份归档至 <code>backup/</code> 目录</td>
+          </tr>
+          <tr>
+            <td>旧版题库兼容</td>
+            <td>从旧版单文件 <code>quizzes.yml</code> 升级</td>
+            <td>插件启动时自动平滑迁移至 <code>quizzes/legacy.yml</code>，既有题库数据零丢失</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="config">
+      <h2>核心配置指南</h2>
+      <p>主配置文件 <code>config.yml</code> 控制出题节律、世界黑白名单、存储引擎以及全服特色玩法：</p>
+      <pre><code># 出题间隔（秒）
+quiz-interval: 1800
+
+# 语言设置（对应 lang/ 下的 zh_cn.yml / en_us.yml）
 language: zh_cn
+
+# 智能出题休眠（全服在线人数低于该值自动暂停出题计时）
 pacing:
   min-players: 1
+
+# 世界黑白名单过滤
 world-filter:
   mode: BLACKLIST
   worlds:
     - "world_nether"
+    - "pvp_arena"
+
+# 奖池滚存机制
 jackpot:
   enabled: true
   money-increment: 200.0
   max-multiplier: 5
+
+# 阶梯领奖机制（前几名均可获奖）
 tiered-rewards:
   enabled: true
   max-ranks: 3
@@ -25,34 +313,148 @@ tiered-rewards:
     1: 100
     2: 60
     3: 30
+
+# 全服狂热时刻
 fever:
   enabled: true
   threshold: 20
   duration-seconds: 180
   quiz-interval-seconds: 30
-  reward-multiplier: 2</code></pre></section>
-<section id="banks"><h2>多文件题库系统 (quizzes/)</h2><p>每个 <code>quizzes/*.yml</code> 文件代表一个独立题库，文件名即为题库唯一标识（如 <code>minecraft.yml</code> 对应 <code>minecraft</code>）。</p><pre><code>name: "原版常识"
+  reward-multiplier: 2</code></pre>
+    </section>
+
+    <section id="banks">
+      <h2>多文件题库系统 (quizzes/)</h2>
+      <p>每个 <code>quizzes/*.yml</code> 文件代表一个独立题库，文件名即为题库唯一标识。插件预装 5 套开箱即用题库：</p>
+      <table>
+        <thead><tr><th>题库文件</th><th>题库名称</th><th>设计定位与体感表现</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>minecraft.yml</code></td>
+            <td>原版生存</td>
+            <td>覆盖合成配方、烟熏炉烧炼、红石侦测器脉冲刻数、活塞推拉方块上限与附魔互斥，包含单选、多选与输入抢答</td>
+          </tr>
+          <tr>
+            <td><code>sound_clues.yml</code></td>
+            <td>声音侦探</td>
+            <td><strong>原版音效辨识特色题</strong>，出题时同步向全服玩家播发原版声音（苦力怕引线声、恶魂蓄力声、末影人瞬移声、女巫笑声、铁砧敲击声）</td>
+          </tr>
+          <tr>
+            <td><code>dimensions.yml</code></td>
+            <td>异界探秘</td>
+            <td><strong>空间感知绑定题库</strong>（<code>worlds: ["world_nether", "world_the_end"]</code>），仅当玩家处于下界或末地时优先匹配出题</td>
+          </tr>
+          <tr>
+            <td><code>safety.yml</code></td>
+            <td>服规与安全</td>
+            <td>普及反诈骗安全常识（管理员索要密码防骗、现金买卖风险、恶性漏洞汇报守则），强化社区文明生态</td>
+          </tr>
+          <tr>
+            <td><code>general.yml</code></td>
+            <td>趣味百科</td>
+            <td>大洋地理面积、水分子元素构成、Mojang 官方“特性”梗，增加日常公屏活跃气氛</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>题库条目格式示范</h3>
+      <pre><code>name: "声音侦探"
 enabled: true
-weight: 50
+weight: 40
 worlds: []
 questions:
-  - id: mc_torch
-    text: "合成火把的配方？"
+  - id: snd_creeper_fuse
+    text: "仔细听正在播放的声音线索，这是什么声音？"
     type: single
+    sound-clue: ENTITY_CREEPER_PRIMED
     options:
-      A: "一个煤炭一个木棍"
-      B: "一个铁锭一个木棍"
+      A: "苦力怕即将自爆的引线声"
+      B: "营火烤肉的滋滋声"
+      C: "下界传送门启动声"
     answer:
       - A
     difficulty: easy
+    messages:
+      question: "🎧 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a听觉灵敏！&b{player_name}&f 抢答正确！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c听错啦 &b{player_name}&f，答案 &9{option}&f 不对！"
     rewards:
-      - "console:money give {player_name} 500"</code></pre><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td><code>name</code></td><td>题库显示名称，用于广播与占位符 <code>{bank_name}</code></td></tr><tr><td><code>weight</code></td><td>题库轮播抽取权重，设为 0 时不参与日常轮播，仅供专属活动抽取</td></tr><tr><td><code>worlds</code></td><td>题库限定生效世界，留空表示继承全局设置；指定后仅在对应世界出题与广播</td></tr><tr><td><code>sound-clue</code></td><td>可选音效线索题，出题时向玩家客户端播发指定原版音效（如 <code>ENTITY_CREEPER_PRIMED</code>）</td></tr></tbody></table></section>
-<section id="gameplay"><h2>特色玩法机制</h2><table><thead><tr><th>机制</th><th>玩法表现</th><th>服主价值</th></tr></thead><tbody><tr><td>奖池滚存 (Jackpot)</td><td>题目时间到无人答对时，倍率自动滚存到下一题（最高可达 5 倍）</td><td>彻底消除无人答题时的冷场挫败感，极大刺激抢答查资料欲望</td></tr><tr><td>阶梯领奖 (Tiered)</td><td>前 3 名答对玩家均可获奖（如第一名 100%，第二名 60%，第三名 30%）</td><td>保护手慢半秒的玩家体验，让非键盘快手也能享受到答题乐趣</td></tr><tr><td>狂热时刻 (Fever)</td><td>全服累计答对达标后进入狂热时间，出题间隔加快至 30 秒且全员双倍奖励</td><td>将单人答题转化为全服合力的社交高潮时刻</td></tr><tr><td>段位荣誉 (Ranks)</td><td>累计答对题数自动晋升童生、秀才、进士直至状元，支持 PAPI 称号展示</td><td>提供长线沉淀与荣誉追求，适合绑定聊天称号或计分板</td></tr><tr><td>智能休眠 (Pacing)</td><td>全服在线玩家低于门槛时自动暂停出题计时，不刷屏、不空跑消耗 CPU</td><td>杜绝深夜无人时日志狂刷，敏感级性能无额外资源浪费</td></tr></tbody></table></section>
-<section id="antibot"><h2>防脚本与防刷题安全</h2><table><thead><tr><th>防御防线</th><th>运作原理</th></tr></thead><tbody><tr><td>人类生理反应拦截</td><td>作答时间低于 <code>min-reaction-ms</code>（默认 800ms）判定为外部脚本秒答并拦截</td></tr><tr><td>动态作答令牌</td><td>聊天栏按钮每次出题生成一次性随机 Token（如 <code>/cyuquiz answer tk_a8f9x</code>），阻断固定宏嗅探</td></tr><tr><td>同 IP 并发限制</td><td>单道题目限制同一 IP 的作答玩家数量（默认 1），阻断小号多开刷题</td></tr><tr><td>连错阶梯惩罚</td><td>连续答错达到阈值自动进入惩罚冷却期（默认禁答 30 秒），阻断穷举暴力试探</td></tr><tr><td>在线时长资格门槛</td><td>可配置新玩家最低游戏在线分钟数，阻断批量注册小号刷金币</td></tr></tbody></table></section>
-<section id="events"><h2>定时活动场次</h2><p><code>events</code> 用于配置每天固定时间开启的专题答题活动，活动期间暂停日常普通出题，结束后恢复。</p><pre><code>events:
+      - "console:money give {player_name} 600"
+      - "console:exp give {player_name} 10"</code></pre>
+    </section>
+
+    <section id="gameplay">
+      <h2>特色玩法机制</h2>
+      <table>
+        <thead><tr><th>机制名称</th><th>游戏内体感表现</th><th>服主运维价值</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>奖池滚存 (Jackpot)</td>
+            <td>题目倒计时结束无人答对时，奖金倍率自动叠加至下一题（最高 5 倍）</td>
+            <td>打破无人答题时的冷场尴尬，奖池累加极大激发后续查阅资料抢答热情</td>
+          </tr>
+          <tr>
+            <td>阶梯领奖 (Tiered)</td>
+            <td>第一名 100% 奖励，第二名 60%，第三名 30%（名次与比例均可在主配置自定）</td>
+            <td>避免单人独占所有奖励，鼓励手速稍慢的普通玩家积极参与互动</td>
+          </tr>
+          <tr>
+            <td>狂热时刻 (Fever)</td>
+            <td>全服累计答对达标后进入狂热时刻，屏幕中央弹出大标题，出题缩短至 30 秒且双倍奖励</td>
+            <td>将个人孤立答题行为转化为全服协同合作的群聚高潮事件</td>
+          </tr>
+          <tr>
+            <td>荣誉段位 (Ranks)</td>
+            <td>累计答对题数自动晋升童生、秀才、举人、进士直至状元，支持 PAPI 变量调用</td>
+            <td>提供长线成长追求，无缝对接聊天称号系统或计分板</td>
+          </tr>
+          <tr>
+            <td>智能休眠 (Pacing)</td>
+            <td>在线人数低于设定值时暂停出题任务</td>
+            <td>深夜或服内无人时不空跑任务、不刷屏日志、不浪费奖池资源</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="antibot">
+      <h2>防脚本安全防线</h2>
+      <table>
+        <thead><tr><th>防御防线</th><th>运作机制与体感表现</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>生理反应时间拦截</td>
+            <td>出题后低于 <code>min-reaction-ms</code>（默认 800ms）提交答案判定为脚本秒答并拦截</td>
+          </tr>
+          <tr>
+            <td>动态作答令牌</td>
+            <td>聊天栏按钮作答时生成一次性随机 Token（如 <code>/cyuquiz answer tk_9f2a1b</code>），拦截固定宏与封包嗅探</td>
+          </tr>
+          <tr>
+            <td>同 IP 并发限制</td>
+            <td>单道题目限制同一 IP 仅允许指定数量玩家作答，防止群开小号刷取奖金</td>
+          </tr>
+          <tr>
+            <td>连续答错冷却</td>
+            <td>短时间内连续答错达到阈值自动进入惩罚冷却期（默认禁答 30 秒），阻断暴力穷举</td>
+          </tr>
+          <tr>
+            <td>游戏时长门槛</td>
+            <td>可设定玩家最低在线分钟数要求，拦截刚注册的初始小号</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="events">
+      <h2>定时活动场次</h2>
+      <p><code>events</code> 用于配置每天固定时间自动开启的限时答题赛事（如晚间答题）。活动期间日常出题自动让道，活动结束后自动结算并发放参与奖与前三名排名奖：</p>
+      <pre><code>events:
   evening:
     enabled: true
-    name: "晚间答题"
+    name: "晚间抢答赛"
+    worlds:
+      - "world"
     start-time: "19:00"
     end-time: "19:30"
     question-count: 15
@@ -61,11 +463,103 @@ questions:
     pool:
       banks:
         - "minecraft"
+        - "sound_clues"
       difficulties:
         easy: 5
         normal: 7
-        hard: 3</code></pre></section>
-<section id="commands"><h2>命令与权限</h2><table><thead><tr><th>命令</th><th>权限</th><th>说明</th></tr></thead><tbody><tr><td><code>/cyuquiz help [页码]</code></td><td>按权限显示</td><td>查看系统帮助（支持点击回填）</td></tr><tr><td><code>/cyuquiz answer &lt;答案&gt;</code></td><td><code>cyuquiz.use</code></td><td>回答当前题目（支持 250ms 点击防抖）</td></tr><tr><td><code>/cyuquiz stats</code></td><td><code>cyuquiz.use</code></td><td>查看个人答题统计</td></tr><tr><td><code>/cyuquiz top</code></td><td><code>cyuquiz.use</code></td><td>查看答题排行榜 Top 10</td></tr><tr><td><code>/cyuquiz bank list</code></td><td><code>cyuquiz.use</code></td><td>查看所有已加载题库与题目统计</td></tr><tr><td><code>/cyuquiz reload</code></td><td><code>cyuquiz.reload</code></td><td>重载配置文件、多语言与全部题库</td></tr><tr><td><code>/cyuquiz event list</code></td><td><code>cyuquiz.event.admin</code></td><td>查看所有配置的活动标识</td></tr><tr><td><code>/cyuquiz event status</code></td><td><code>cyuquiz.event.admin</code></td><td>查看当前活动进行状态</td></tr><tr><td><code>/cyuquiz event start &lt;活动ID&gt;</code></td><td><code>cyuquiz.event.admin</code></td><td>手动开启指定活动</td></tr><tr><td><code>/cyuquiz event stop</code></td><td><code>cyuquiz.event.admin</code></td><td>手动终止当前活动</td></tr></tbody></table></section>
-<section id="papi"><h2>PlaceholderAPI 变量支持</h2><table><thead><tr><th>占位符</th><th>说明</th></tr></thead><tbody><tr><td><code>%cyuquiz_answered%</code></td><td>玩家总答题数量</td></tr><tr><td><code>%cyuquiz_correct%</code></td><td>玩家答对的题目数量</td></tr><tr><td><code>%cyuquiz_wrong%</code></td><td>玩家答错的题目数量</td></tr><tr><td><code>%cyuquiz_current_streak%</code></td><td>玩家当前连对题目数量</td></tr><tr><td><code>%cyuquiz_highest_streak%</code></td><td>玩家最高连对题目数量</td></tr><tr><td><code>%cyuquiz_accuracy%</code></td><td>玩家答题正确率百分比（如 85.5%）</td></tr><tr><td><code>%cyuquiz_rank%</code></td><td>玩家当前答题荣誉段位称号（如 [进士]）</td></tr><tr><td><code>%cyuquiz_rank_next%</code></td><td>晋升下一段位所需答对题数（最高段位显示 MAX）</td></tr><tr><td><code>%cyuquiz_jackpot%</code></td><td>当前滚存奖池倍率（如 3）</td></tr><tr><td><code>%cyuquiz_fever%</code></td><td>全服当前是否处于狂热时刻（是/否）</td></tr></tbody></table></section>
-<section id="advice"><h2>运维建议</h2><p>推荐采用多世界题库隔离策略：在生存服出原版百科，在副本服出 Lore 题目。开启奖池滚存与阶梯奖励后，建议配合防脚本动态令牌，既保证公平竞技，又将全服参与度最大化。</p><div class="footer">文档对应 CyuQuiz-Reload 1.0.4 工业级黑盒交付规范</div></section>
-</div></main></body></html>
+        hard: 3
+    rewards:
+      participation:
+        - "console:money give {player_name} 200"
+      top:
+        1:
+          - "console:give {player_name} diamond 3"
+        2:
+          - "console:give {player_name} diamond 2"
+        3:
+          - "console:give {player_name} diamond 1"</code></pre>
+    </section>
+
+    <section id="commands">
+      <h2>命令与权限表</h2>
+      <table>
+        <thead><tr><th>命令</th><th>权限</th><th>功能说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>/cyuquiz help [页码]</code></td><td>无（按权限过滤显示）</td><td>查看暗色线框调色板帮助界面（条目支持点击填入聊天框）</td></tr>
+          <tr><td><code>/cyuquiz answer &lt;答案&gt;</code></td><td><code>cyuquiz.use</code></td><td>回答当前题目（具备 250ms 点击防抖）</td></tr>
+          <tr><td><code>/cyuquiz stats</code></td><td><code>cyuquiz.use</code></td><td>查看个人答题数、正确率、连对与最高纪录</td></tr>
+          <tr><td><code>/cyuquiz top</code></td><td><code>cyuquiz.use</code></td><td>查看全服正确题数排行榜 Top 10</td></tr>
+          <tr><td><code>/cyuquiz bank list</code></td><td><code>cyuquiz.use</code></td><td>查看已加载题库列表、启用状态与题量统计</td></tr>
+          <tr><td><code>/cyuquiz reload</code></td><td><code>cyuquiz.reload</code></td><td>热重载主配置、多语言与全部题库文件</td></tr>
+          <tr><td><code>/cyuquiz event list</code></td><td><code>cyuquiz.event.admin</code></td><td>查看已配置的答题活动列表</td></tr>
+          <tr><td><code>/cyuquiz event status</code></td><td><code>cyuquiz.event.admin</code></td><td>查看当前活动场次进度与参与人数</td></tr>
+          <tr><td><code>/cyuquiz event start &lt;活动ID&gt;</code></td><td><code>cyuquiz.event.admin</code></td><td>手动开启指定活动场次</td></tr>
+          <tr><td><code>/cyuquiz event stop</code></td><td><code>cyuquiz.event.admin</code></td><td>手动终止当前进行中的活动</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="papi">
+      <h2>PlaceholderAPI 变量支持</h2>
+      <table>
+        <thead><tr><th>占位符</th><th>说明</th><th>返回示例</th></tr></thead>
+        <tbody>
+          <tr><td><code>%cyuquiz_answered%</code></td><td>玩家总答题数量</td><td>42</td></tr>
+          <tr><td><code>%cyuquiz_correct%</code></td><td>玩家答对题目数量</td><td>36</td></tr>
+          <tr><td><code>%cyuquiz_wrong%</code></td><td>玩家答错题目数量</td><td>6</td></tr>
+          <tr><td><code>%cyuquiz_current_streak%</code></td><td>当前连对次数</td><td>5</td></tr>
+          <tr><td><code>%cyuquiz_highest_streak%</code></td><td>历史最高连对纪录</td><td>12</td></tr>
+          <tr><td><code>%cyuquiz_accuracy%</code></td><td>答题正确率百分比</td><td>85.7%</td></tr>
+          <tr><td><code>%cyuquiz_rank%</code></td><td>当前答题荣誉段位称号</td><td>[进士]</td></tr>
+          <tr><td><code>%cyuquiz_rank_next%</code></td><td>晋升下一段位所需答对数</td><td>200 (最高级显示 MAX)</td></tr>
+          <tr><td><code>%cyuquiz_jackpot%</code></td><td>当前奖池滚存倍率</td><td>3</td></tr>
+          <tr><td><code>%cyuquiz_fever%</code></td><td>当前全服是否处于狂热时刻</td><td>是 / 否</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>报错与异常排查速查</h2>
+      <table>
+        <thead><tr><th>异常现象</th><th>根本原因</th><th>解决办法</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>启动提示 <code>Unknown sound '...'</code></td>
+            <td>题目中配置的音效枚举名在当前服务端版本不存在</td>
+            <td>检查该题目的 <code>sound-clue</code> 或 <code>difficulties.sounds</code>，确认该音效是否支持当前 MC 版本（如 1.16.5 不支持 1.19+ 的守卫者音效）</td>
+          </tr>
+          <tr>
+            <td>玩家作答提示 <code>作答速度过快</code></td>
+            <td>玩家手速过快或使用了宏指令，触发了 <code>min-reaction-ms</code> 防护</td>
+            <td>正常玩家一般需 800ms 以上反应时间；若觉得过严可在 <code>config.yml</code> 中将 <code>min-reaction-ms</code> 调低（如设为 500）</td>
+          </tr>
+          <tr>
+            <td>某些世界收不到题目广播</td>
+            <td>触发了全局世界黑名单或该题库设置了限定世界</td>
+            <td>检查主配置 <code>world-filter</code> 是否将该世界加入了黑名单，或者该题库的 <code>worlds: [...]</code> 是否限定了其他世界</td>
+          </tr>
+          <tr>
+            <td>题目出现无人答对但奖池没有倍增</td>
+            <td>未开启奖池滚存或已达上限</td>
+            <td>检查 <code>jackpot.enabled</code> 是否为 true，以及是否已达到 <code>max-multiplier</code> 上限</td>
+          </tr>
+          <tr>
+            <td>重启后答题统计丢失</td>
+            <td>启用了 MySQL 但连接失败，或本地 <code>stats.yml</code> 权限异常</td>
+            <td>检查控制台数据库报错日志；若无需跨服同步，直接保持 <code>database.use-mysql: false</code> 本地持久化即可</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="advice">
+      <h2>运维最佳实践</h2>
+      <p>1. <strong>因地制宜配置题库</strong>：在生存主世界开启 <code>minecraft.yml</code> 与 <code>sound_clues.yml</code>，在下界末地通过 <code>dimensions.yml</code> 强化探索氛围。</p>
+      <p>2. <strong>狂热时刻配合晚间赛事</strong>：将全服狂热时刻阈值设为 20~30 题，与晚间抢答赛配合使用，可在活动期间激发玩家极高的互动粘性。</p>
+      <p>3. <strong>防作弊参数合理设置</strong>：启用 <code>dynamic-token: true</code> 彻底屏蔽连点宏；如存在同网吧多开玩家，可将 <code>max-answers-per-ip</code> 调整为 2~3。</p>
+      <div class="footer">文档对齐 CyuQuiz-Reload 1.0.4 工业级黑盒交付规范</div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
