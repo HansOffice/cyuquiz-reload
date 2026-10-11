@@ -1,0 +1,61 @@
+# 综合百科与趣味常识题库
+# 题库唯一标识对应当前文件名 general
+
+# 题库显示名称，用于广播与占位符
+name: "趣味百科"
+
+# 是否启用此题库
+enabled: true
+
+# 轮播抽取权重，设为 0 则不参与日常轮播仅供专属活动抽取
+weight: 30
+
+# 生效世界列表，留空表示继承全局世界设置
+worlds: []
+
+# 题目列表
+questions:
+  # 题目唯一标识
+  - id: gen_ocean
+    # 题目文本内容
+    text: "地球上最大的大洋是？"
+    # 题目类型（single 单选 / multiple 多选 / input 问答）
+    type: single
+    # 候选选项列表
+    options:
+      A: "大西洋"
+      B: "太平洋"
+      C: "印度洋"
+      D: "北冰洋"
+    # 正确答案选项或文本列表
+    answer:
+      - B
+    # 题目难度（对应 config.yml 中的 difficulties 节点）
+    difficulty: easy
+    # 客制化提示文本
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a恭喜 &b{player_name}&f，答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    # 答对奖励指令列表（支持 console, player, sound）
+    rewards:
+      - "console:money give {player_name} 600"
+
+  - id: gen_elements
+    text: "水分子由哪些元素构成？(多选)"
+    type: multiple
+    options:
+      A: "氢"
+      B: "氧"
+      C: "碳"
+      D: "氮"
+    answer:
+      - A
+      - B
+    difficulty: normal
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &b太棒了 &b{player_name}&f，化学满分！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，你的答案不完全正确！"
+    rewards:
+      - "console:money give {player_name} 900"

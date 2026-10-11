@@ -1,0 +1,12 @@
+target/
+.idea/
+.internal-docs/
+*.iml
+*.log
+dependency-reduced-pom.xml
+AGENTS.md
+RELEASE.md
+backup/
+stats.yml
+*.zip
+!发行/*.zip

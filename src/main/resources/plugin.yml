@@ -1,0 +1,30 @@
+name: cyuquiz-reload
+version: '${project.version}'
+main: org.cyuCBMclean.cyuquizReload.CyuquizReload
+api-version: '${minecraft.api.version}'
+author: HansOffice
+description: Cyu 问答系统与定时活动
+folia-supported: ${folia.supported}
+softdepend: [PlaceholderAPI]
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:${kotlin.version}
+  - org.slf4j:slf4j-api:${slf4j.version}
+  - com.zaxxer:HikariCP:4.0.3
+  - com.mysql:mysql-connector-j:${mysql.version}
+
+commands:
+  cyuquiz:
+    description: 问答系统主指令
+    aliases: [quiz, cquiz]
+    usage: /cyuquiz help
+
+permissions:
+  cyuquiz.use:
+    description: 允许玩家查看帮助、统计、排行榜与回答问题
+    default: true
+  cyuquiz.reload:
+    description: 允许管理员重载插件
+    default: op
+  cyuquiz.event.admin:
+    description: 允许管理员管理答题活动
+    default: op

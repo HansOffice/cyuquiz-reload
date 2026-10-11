@@ -1,0 +1,78 @@
+# CyuQuiz 简体中文语言文件
+# 支持颜色代码、十六进制颜色与 MiniMessage 语义标签
+
+prefix: "&f[&bCyuQuiz&f] "
+
+command:
+  no-permission: "&#F87171× 你没有权限执行此操作"
+  not-player: "&#F87171× 该指令仅限玩家执行"
+  unknown: "&#F87171× 未知子指令，输入 &#D7DEE8/cyuquiz help &#F87171查看帮助"
+  reloading: "&#8A96A8正在重载配置与题库..."
+  reload-success: "&#34D399✔ 配置与题库已成功重载"
+  reload-failure: "&#F87171× 重载失败&#5B6472: &#8A96A8{error}"
+  help-border: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  help-title: "<gradient:#58C7FF:#7DE2B8>&lCyuQuiz 帮助</gradient>"
+  help-invalid-page: "&#F87171× 页码无效，请输入数字"
+  help-page-out-of-bounds: "&#8A96A8帮助页码超出范围，已为你显示第 &#D7DEE81 &#8A96A8页，共 &#D7DEE8{total_pages} &#8A96A8页"
+  help-json-button-prev: "&#7DD3FC‹ 上一页"
+  help-json-button-next: "&#7DD3FC下一页 ›"
+  help-json-hover-entry: "&#8A96A8点击在聊天框填入指令 &#D7DEE8{command}"
+  help-json-hover-prev: "&#8A96A8点击查看第 &#D7DEE8{page} &#8A96A8页"
+  help-json-hover-next: "&#8A96A8点击查看第 &#D7DEE8{page} &#8A96A8页"
+  help-json-page-info: "&#8A96A8第 &#D7DEE8{current_page}&#8A96A8/&#D7DEE8{total_pages} &#8A96A8页"
+  bank-list-header: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  bank-list-title: "<gradient:#58C7FF:#7DE2B8>&l已加载题库列表 &7({total} 个题库)</gradient>"
+  bank-entry: "  &#58C7FF{bank_id} &#8A96A8» &#D7DEE8{name} &#5B6472(&#34D399{count} &#8A96A8题&#5B6472) {status}"
+  bank-enabled: "&#34D399[启用]"
+  bank-disabled: "&#F87171[禁用]"
+  bank-empty: "&#8A96A8当前没有加载任何题库"
+  event-usage: "&#F87171× 用法&#5B6472: &#D7DEE8/cyuquiz event <list|status|start|stop> [活动ID]"
+  event-no-configured: "&#8A96A8当前没有配置答题活动"
+  event-list: "&#8A96A8已配置活动列表&#5B6472: &#D7DEE8{events}"
+  event-status: "&#8A96A8活动状态&#5B6472: &#D7DEE8{status}"
+
+quiz:
+  unanswered: "&#8A96A8时间到！上一题无人答对，正确答案是&#5B6472: &#34D399{correct_option}"
+  multiple-hint: "&#8A96A8(多选题，请在聊天框直接输入选项，如 A,C)"
+  input-hint: "&#8A96A8(问答题，请在聊天框直接输入答案内容)"
+  cannot-answer: "&#F87171× 当前无法作答或你已提交过本题"
+  no-data: "&#8A96A8你暂时还没有答题记录"
+  summary: "&#8A96A8已答&#5B6472: &#58C7FF{answered} &#5B6472| &#8A96A8答对&#5B6472: &#34D399{correct} &#5B6472| &#8A96A8答错&#5B6472: &#F87171{wrong} &#5B6472| &#8A96A8最高连对&#5B6472: &#FBBF24{highest_streak}"
+  button-text: "&#58C7FF[{option}] &#D7DEE8{text}"
+  button-hover: "&#8A96A8点击选择选项 &#58C7FF{option}"
+  jackpot-accumulated: "&#F87171× 时间到无人答对！奖池已累积至 &#FBBF24{multiplier} &#F87171倍滚存加成！"
+  jackpot-won: "&#FBBF24★ 恭喜 &#D7DEE8{player_name} &#FBBF24斩获累计 &#58C7FF{multiplier} &#FBBF24倍奖池滚存大奖！"
+  tiered-winner: "&#34D399✔ &#D7DEE8{player_name} &#8A96A8第 &#58C7FF{rank} &#8A96A8位答对本题！获得 &#FBBF24{ratio}% &#8A96A8阶梯奖励"
+
+fever:
+  started-title: "<gradient:#F59E0B:#EF4444>&l★ 答题狂热时刻 ★</gradient>"
+  started-subtitle: "&#D7DEE8出题频率加速，全部答题奖励翻倍！"
+  started-message: "&#F59E0B★ 全服累计答对达标！文曲星临凡，狂热答题时间开启！"
+  ended-message: "&#8A96A8全服狂热时刻已结束，恢复日常出题节奏"
+
+anti-bot:
+  too-fast: "&#F87171× 答题速度过快，已触发防脚本拦截 ({latency}ms < {min_reaction}ms)"
+  ip-limit: "&#F87171× 当前 IP 答题人数已达上限 ({max_ip})，请勿多开刷题"
+  penalty-cooldown: "&#F87171× 连续答错次数过多，已被暂停作答，剩余冷却时间&#5B6472: &#FBBF24{seconds}秒"
+  playtime-limit: "&#F87171× 参与答题需要至少在线 {min_time} 分钟，当前时长不足"
+  invalid-token: "&#F87171× 作答令牌已失效或不存在，请重新点击当前题目的选项"
+
+top:
+  header: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  title: "<gradient:#58C7FF:#7DE2B8>&l答题排行榜 &7(Top 10)</gradient>"
+  empty: "&#8A96A8暂无排行数据..."
+  format: "  &#58C7FF{rank}. &#D7DEE8{player_name} &#8A96A8» &#34D399{correct} &#8A96A8题"
+  unknown-player: "未知玩家"
+  footer: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+
+event:
+  already-running: "&#F87171× 当前已有答题活动正在进行中"
+  not-found: "&#F87171× 找不到指定活动: {id}"
+  not-enabled: "&#F87171× 活动 {id} 尚未启用"
+  started: "&#34D399✔ 答题活动 {name} 已正式开启"
+  stopped: "&#34D399✔ 答题活动 {name} 已手动结束"
+  no-running: "&#8A96A8当前没有正在进行的答题活动"
+  status-format: "活动 {name}，进度 {question}/{total}，参与人数 {players}"
+  ended-broadcast: "&#8A96A8答题活动 &#58C7FF{name} &#8A96A8已结束"
+  ended-no-winner: "&#8A96A8本场活动暂无有效作答记录"
+  winner-format: "  &#58C7FF{rank}. &#D7DEE8{player_name} &#8A96A8» &#FBBF24{score} &#8A96A8分 &#5B6472(&#34D399{correct}&#8A96A8 题&#5B6472)"

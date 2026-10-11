@@ -1,0 +1,78 @@
+# CyuQuiz English Language File
+# Supports color codes, hex colors, and MiniMessage tags
+
+prefix: "&f[&bCyuQuiz&f] "
+
+command:
+  no-permission: "&#F87171× You do not have permission to execute this command"
+  not-player: "&#F87171× This command can only be executed by players"
+  unknown: "&#F87171× Unknown sub-command, type &#D7DEE8/cyuquiz help &#F87171for help"
+  reloading: "&#8A96A8Reloading configuration and quizzes..."
+  reload-success: "&#34D399✔ Configuration and quizzes reloaded successfully"
+  reload-failure: "&#F87171× Reload failed&#5B6472: &#8A96A8{error}"
+  help-border: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  help-title: "<gradient:#58C7FF:#7DE2B8>&lCyuQuiz Help</gradient>"
+  help-invalid-page: "&#F87171× Invalid page number, please enter a valid integer"
+  help-page-out-of-bounds: "&#8A96A8Page out of bounds, showing page &#D7DEE81 &#8A96A8of &#D7DEE8{total_pages}"
+  help-json-button-prev: "&#7DD3FC‹ Previous"
+  help-json-button-next: "&#7DD3FCNext ›"
+  help-json-hover-entry: "&#8A96A8Click to paste command &#D7DEE8{command}"
+  help-json-hover-prev: "&#8A96A8Click to view page &#D7DEE8{page}"
+  help-json-hover-next: "&#8A96A8Click to view page &#D7DEE8{page}"
+  help-json-page-info: "&#8A96A8Page &#D7DEE8{current_page}&#8A96A8/&#D7DEE8{total_pages}"
+  bank-list-header: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  bank-list-title: "<gradient:#58C7FF:#7DE2B8>&lLoaded Question Banks &7({total} Banks)</gradient>"
+  bank-entry: "  &#58C7FF{bank_id} &#8A96A8» &#D7DEE8{name} &#5B6472(&#34D399{count} &#8A96A8questions&#5B6472) {status}"
+  bank-enabled: "&#34D399[Enabled]"
+  bank-disabled: "&#F87171[Disabled]"
+  bank-empty: "&#8A96A8No question banks currently loaded"
+  event-usage: "&#F87171× Usage&#5B6472: &#D7DEE8/cyuquiz event <list|status|start|stop> [event_id]"
+  event-no-configured: "&#8A96A8No quiz events currently configured"
+  event-list: "&#8A96A8Configured events&#5B6472: &#D7DEE8{events}"
+  event-status: "&#8A96A8Event status&#5B6472: &#D7DEE8{status}"
+
+quiz:
+  unanswered: "&#8A96A8Time is up! No one answered correctly. The correct answer was&#5B6472: &#34D399{correct_option}"
+  multiple-hint: "&#8A96A8(Multiple-choice question, please type choices in chat, e.g. A,C)"
+  input-hint: "&#8A96A8(Input question, please type your answer directly in chat)"
+  cannot-answer: "&#F87171× You cannot answer now or you have already submitted an answer"
+  no-data: "&#8A96A8You do not have any quiz statistics yet"
+  summary: "&#8A96A8Answered&#5B6472: &#58C7FF{answered} &#5B6472| &#8A96A8Correct&#5B6472: &#34D399{correct} &#5B6472| &#8A96A8Wrong&#5B6472: &#F87171{wrong} &#5B6472| &#8A96A8Best Streak&#5B6472: &#FBBF24{highest_streak}"
+  button-text: "&#58C7FF[{option}] &#D7DEE8{text}"
+  button-hover: "&#8A96A8Click to choose option &#58C7FF{option}"
+  jackpot-accumulated: "&#F87171× Time is up! No one answered correctly. Jackpot bonus increased to &#FBBF24{multiplier}x&#F87171!"
+  jackpot-won: "&#FBBF24★ Congratulations &#D7DEE8{player_name} &#FBBF24for winning the accumulated &#58C7FF{multiplier}x &#FBBF24Jackpot!"
+  tiered-winner: "&#34D399✔ &#D7DEE8{player_name} &#8A96A8answered in place &#58C7FF#{rank}&#8A96A8! Received &#FBBF24{ratio}% &#8A96A8tiered reward"
+
+fever:
+  started-title: "<gradient:#F59E0B:#EF4444>&l★ QUIZ FEVER MODE ★</gradient>"
+  started-subtitle: "&#D7DEE8Faster quiz intervals and 2x rewards for everyone!"
+  started-message: "&#F59E0B★ Global correct answer milestone reached! Quiz Fever Mode activated!"
+  ended-message: "&#8A96A8Quiz Fever Mode ended. Normal pacing restored"
+
+anti-bot:
+  too-fast: "&#F87171× Answered too fast, anti-script protection triggered ({latency}ms < {min_reaction}ms)"
+  ip-limit: "&#F87171× Maximum answers per IP reached ({max_ip}), multi-accounting is not allowed"
+  penalty-cooldown: "&#F87171× Too many consecutive wrong answers, answering paused. Cooldown&#5B6472: &#FBBF24{seconds}s"
+  playtime-limit: "&#F87171× Participating requires at least {min_time} minutes of online playtime"
+  invalid-token: "&#F87171× Answer token invalid or expired, please click the option again"
+
+top:
+  header: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+  title: "<gradient:#58C7FF:#7DE2B8>&lQuiz Leaderboard &7(Top 10)</gradient>"
+  empty: "&#8A96A8No ranking data yet..."
+  format: "  &#58C7FF{rank}. &#D7DEE8{player_name} &#8A96A8» &#34D399{correct} &#8A96A8correct"
+  unknown-player: "Unknown Player"
+  footer: "&#3A4352&m┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈"
+
+event:
+  already-running: "&#F87171× Another quiz event is already in progress"
+  not-found: "&#F87171× Event not found: {id}"
+  not-enabled: "&#F87171× Event {id} is not enabled"
+  started: "&#34D399✔ Quiz event {name} has started"
+  stopped: "&#34D399✔ Quiz event {name} has been stopped"
+  no-running: "&#8A96A8No quiz event currently running"
+  status-format: "Event {name}, progress {question}/{total}, participants {players}"
+  ended-broadcast: "&#8A96A8Quiz event &#58C7FF{name} &#8A96A8has ended"
+  ended-no-winner: "&#8A96A8No valid answers recorded in this event"
+  winner-format: "  &#58C7FF{rank}. &#D7DEE8{player_name} &#8A96A8» &#FBBF24{score} &#8A96A8pts &#5B6472(&#34D399{correct}&#8A96A8 correct&#5B6472)"

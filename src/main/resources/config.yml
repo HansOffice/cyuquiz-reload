@@ -1,0 +1,247 @@
+# 欢迎使用 CyuQuiz-Reload
+# MineBBS: https://www.minebbs.com/
+# QQ群聊：331910315
+#
+# --- 权限节点 ---
+# cyuquiz.use         - 允许查看帮助、统计、排行榜与回答问题
+# cyuquiz.reload      - 允许重载插件
+# cyuquiz.event.admin - 允许管理答题活动
+#
+# --- 主要文件 ---
+# config.yml          - 核心规则、调度间隔与视觉设置
+# quizzes/            - 题库配置目录，每个 .yml 代表一个独立题库
+# stats.yml           - 本地玩家统计数据（关闭 MySQL 时生效）
+# lang/               - 多语言文本文件（zh_cn / en_us）
+#
+# --- PlaceholderAPI 变量 ---
+# %cyuquiz_answered%        - 玩家总答题数量
+# %cyuquiz_correct%         - 玩家答对题目数量
+# %cyuquiz_wrong%           - 玩家答错题目数量
+# %cyuquiz_current_streak%  - 玩家当前连对题目数量
+# %cyuquiz_highest_streak%  - 玩家最高连对题目数量
+# %cyuquiz_accuracy%        - 玩家答题正确率（百分比）
+# %cyuquiz_rank%            - 玩家当前答题荣誉段位称号
+# %cyuquiz_rank_next%       - 晋升下一段位所需答对题数
+# %cyuquiz_jackpot%         - 当前滚存奖池倍率
+# %cyuquiz_fever%           - 当前全服是否处于答题狂热时刻（是/否）
+
+# 配置版本，请勿手动降低版本号
+config-version: 104
+
+# 配置布局协议版本，结构调整时自增
+config-layout: 4
+
+# 语言设置（zh_cn / en_us），对应 lang/ 目录下的语言文件
+language: zh_cn
+
+# 自动出题间隔（秒）
+quiz-interval: 1800
+
+# 智能出题休眠
+pacing:
+  # 全服在线人数低于该数值时自动休眠暂停出题（0为不休眠）
+  min-players: 1
+
+# 世界过滤设置
+world-filter:
+  # 过滤模式（BLACKLIST 黑名单跳过 / WHITELIST 白名单允许）
+  mode: BLACKLIST
+  # 目标世界列表
+  worlds:
+    - "world_nether"
+    - "world_the_end"
+    - "pvp_arena"
+
+# 数据库存储设置
+database:
+  # 是否开启 MySQL 存储统计数据（关闭时使用本地 stats.yml）
+  use-mysql: false
+  # MySQL 连接地址
+  uri: "jdbc:mysql://localhost:3306/minecraft?useSSL=false&characterEncoding=utf8"
+
+# 奖池滚存累加机制
+jackpot:
+  # 是否启用无人答对奖池滚存
+  enabled: true
+  # 每次无人答对基础滚存金币增量
+  money-increment: 200.0
+  # 最大滚存倍率上限（达到后不再继续累加）
+  max-multiplier: 5
+
+# 阶梯作答名次奖励
+tiered-rewards:
+  # 是否开启多名次阶梯领奖
+  enabled: true
+  # 最多允许前几名答对玩家获奖
+  max-ranks: 3
+  # 各名次奖励比例（百分比，第一名默认为100%）
+  ratios:
+    1: 100
+    2: 60
+    3: 30
+
+# 答题段位晋升体系
+ranks:
+  # 是否启用段位称号
+  enabled: true
+  # 晋升门槛列表（按答对题数由低到高判定）
+  tiers:
+    - correct: 0
+      name: "&7[童生]"
+    - correct: 10
+      name: "&a[秀才]"
+    - correct: 50
+      name: "&b[举人]"
+    - correct: 100
+      name: "&e[进士]"
+    - correct: 200
+      name: "&6[探花]"
+    - correct: 350
+      name: "&c[榜眼]"
+    - correct: 500
+      name: "&d&l[状元]"
+
+# 全服答题狂热时刻（Fever Mode）
+fever:
+  # 是否启用全服狂热时刻
+  enabled: true
+  # 触发狂热所需全服累计答对题数
+  threshold: 20
+  # 狂热状态持续时间（秒）
+  duration-seconds: 180
+  # 狂热期间出题加速间隔（秒）
+  quiz-interval-seconds: 30
+  # 狂热期间作答奖励倍率（整数）
+  reward-multiplier: 2
+
+# 防脚本与防刷题设置
+anti-bot:
+  # 是否启用防脚本作答检测
+  enabled: true
+  # 人类生理反应时间门槛（毫秒），低于该时间作答判定为脚本秒答拦截
+  min-reaction-ms: 800
+  # 是否启用动态作答令牌（拦截固定宏指令点击与聊天栏嗅探）
+  dynamic-token: true
+  # 同一 IP 每道题最多允许几名玩家作答（0为不限制）
+  max-answers-per-ip: 1
+  # 连续答错触发阈值（达到后触发惩罚冷却）
+  wrong-answer-threshold: 3
+  # 连续答错惩罚冷却时间（秒，0为不惩罚）
+  wrong-answer-penalty-seconds: 30
+  # 最低参与游戏在线时长（分钟，0为不限制）
+  min-playtime-minutes: 0
+
+# 单题作答限制
+anti-spam:
+  # 每名玩家每道题是否仅允许提交一次作答
+  one-try: true
+
+# 广播性能分批
+performance:
+  # 每批通知玩家数量
+  broadcast-batch-size: 8
+  # 各批次间隔刻数
+  broadcast-batch-delay-ticks: 1
+
+# 定时答题活动
+events:
+  evening:
+    # 是否启用该活动
+    enabled: false
+    # 活动显示名称
+    name: "晚间答题"
+    # 生效世界列表（留空表示全服生效）
+    worlds:
+      - "world"
+    # 每天开始时间（24小时制 HH:mm）
+    start-time: "19:00"
+    # 每天结束时间（24小时制 HH:mm）
+    end-time: "19:30"
+    # 本场最多出题总数
+    question-count: 15
+    # 每道题目之间的间隔秒数
+    question-interval-seconds: 60
+    # 每题作答有效时间（秒）
+    answer-seconds: 45
+    # 题目池难度与题库配比
+    pool:
+      # 限定抽取的题库列表（留空表示从所有启用的题库中抽取）
+      banks:
+        - "minecraft"
+      # 各难度抽取题数
+      difficulties:
+        easy: 5
+        normal: 7
+        hard: 3
+    # 结算奖励
+    rewards:
+      participation: []
+      top:
+        1:
+          - "console:give {player_name} diamond 3"
+        2:
+          - "console:give {player_name} diamond 2"
+        3:
+          - "console:give {player_name} diamond 1"
+
+# 屏幕视觉表现
+visuals:
+  title:
+    # 是否启用屏幕中央标题提示
+    enable: false
+    # 主标题内容
+    main: "&e&l答题时间"
+    # 副标题内容
+    sub: "&f{question}"
+  bossbar:
+    # 是否启用顶部血条公告
+    enable: false
+    # 血条文本标题
+    title: "&b当前题目: &f{question}"
+    # 血条颜色（BLUE, RED, GREEN, YELLOW, PINK, PURPLE, WHITE）
+    color: BLUE
+    # 血条样式（SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20）
+    style: SOLID
+
+# 连对奖励
+streaks:
+  # 达到指定连对次数
+  3:
+    # 触发动作指令列表（支持 console, player, sound）
+    - "console:money give {player_name} 1000"
+    - "player:say 我连续答对3题啦！"
+    - "sound:BLOCK_NOTE_BLOCK_CHIME"
+  5:
+    - "console:give {player_name} diamond 1"
+    - "player:say 我的天，我已经连对5题了！"
+    - "sound:BLOCK_BEACON_ACTIVATE"
+
+# 难度与音效设置
+difficulties:
+  easy:
+    # 随机抽取权重
+    weight: 50
+    # 聊天栏显示标签
+    label: "&a[简单]"
+    # 音效事件配置
+    sounds:
+      # 出题提示音
+      new-question: ENTITY_EXPERIENCE_ORB_PICKUP
+      # 答对音效
+      answer-correct: ENTITY_PLAYER_LEVELUP
+      # 答错音效
+      answer-wrong: ENTITY_VILLAGER_NO
+  normal:
+    weight: 30
+    label: "&e[普通]"
+    sounds:
+      new-question: BLOCK_NOTE_BLOCK_BELL
+      answer-correct: ENTITY_PLAYER_LEVELUP
+      answer-wrong: ENTITY_VILLAGER_NO
+  hard:
+    weight: 20
+    label: "&c[困难]"
+    sounds:
+      new-question: ENTITY_WITHER_SPAWN
+      answer-correct: ENTITY_PLAYER_LEVELUP
+      answer-wrong: ENTITY_ZOMBIE_VILLAGER_STEP

@@ -1,0 +1,95 @@
+# 原版生存与常识题库
+# 题库唯一标识对应当前文件名 minecraft
+
+# 题库显示名称，用于广播与占位符
+name: "原版常识"
+
+# 是否启用此题库
+enabled: true
+
+# 轮播抽取权重，设为 0 则不参与日常轮播仅供专属活动抽取
+weight: 50
+
+# 生效世界列表，留空表示继承全局世界设置
+worlds: []
+
+# 题目列表
+questions:
+  # 题目唯一标识
+  - id: mc_torch
+    # 题目文本内容
+    text: "合成火把的配方？"
+    # 题目类型（single 单选 / multiple 多选 / input 问答）
+    type: single
+    # 候选选项列表
+    options:
+      A: "一个煤炭一个木棍"
+      B: "一个铁锭一个木棍"
+    # 正确答案选项或文本列表
+    answer:
+      - A
+    # 题目难度（对应 config.yml 中的 difficulties 节点）
+    difficulty: easy
+    # 客制化提示文本
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a恭喜 &b{player_name}&f，答对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误，再接再厉！"
+    # 答对奖励指令列表（支持 console, player, sound）
+    rewards:
+      - "console:money give {player_name} 500"
+      - "console:exp give {player_name} 10"
+
+  - id: mc_sound_creeper
+    text: "仔细听播放的声音线索，这是哪种生物的动静？"
+    type: single
+    sound-clue: ENTITY_CREEPER_PRIMED
+    options:
+      A: "苦力怕"
+      B: "末影人"
+      C: "僵尸"
+    answer:
+      - A
+    difficulty: normal
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请辨听：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &a听力真敏锐！&b{player_name}&f 抢答正确！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c抱歉 &b{player_name}&f，答案 &9{option}&f 错误！"
+    rewards:
+      - "console:money give {player_name} 800"
+      - "console:exp give {player_name} 15"
+
+  - id: mc_nether_mobs
+    text: "以下哪些生物原生生成在下界？(多选)"
+    type: multiple
+    options:
+      A: "恶魂"
+      B: "僵尸"
+      C: "猪灵"
+      D: "苦力怕"
+    answer:
+      - A
+      - C
+    difficulty: normal
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请回答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &b太棒了 &b{player_name}&f，全部选对了！正确答案：&9{correct_option}&f 🎉"
+      on-wrong: "❌ &c不好意思 &b{player_name}&f，你的答案 &9{option}&f 不完全正确，请再试一次！"
+    rewards:
+      - "console:money give {player_name} 800"
+      - "console:exp give {player_name} 15"
+
+  - id: mc_enchant_table
+    text: "我的世界中用于给装备附魔的方块叫什么？"
+    type: input
+    answer:
+      - "附魔台"
+      - "enchanting table"
+    difficulty: hard
+    messages:
+      question: "📝 &b{bank_name}&f · {difficulty} &b{player_name}&f，请抢答：&9{quiz_id}&f → {question}"
+      on-correct: "✅ &c反应真快！&b{player_name}&f 抢答正确！答案就是 &9{correct_option}&f 🎉"
+      on-wrong: "❌ &c答错啦 &b{player_name}&f，你的回答 &9{option}&f 不对 😢"
+    rewards:
+      - "console:money give {player_name} 1500"
+      - "console:exp give {player_name} 30"
