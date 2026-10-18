@@ -1,5 +1,6 @@
 target/
 .idea/
+.vscode/
 .internal-docs/
 *.iml
 *.log
@@ -10,3 +11,5 @@ backup/
 stats.yml
 *.zip
 !发行/*.zip
+用户文档/
+发布帖/
